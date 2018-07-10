@@ -32,15 +32,15 @@ export default {
   <div class="btn-more">
     <ul v-if="visible" class="animated fadeIn">
       <li>
-        <a href="#">
+        <router-link :to="{ name: 'about' }">
           <i class="fas fa-info"></i>
-        </a>
+        </router-link>
       </li>
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="fas fa-bell"></i>
         </a>
-      </li>
+      </li> -->
     </ul>
     <a class="button" @click="setVisible">
       <i class="fas fa-bars"></i>
