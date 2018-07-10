@@ -1,10 +1,11 @@
 <script>
 import { loadRandom } from '../support/quotes'
 import Quote from '../components/quote.vue'
+import BtnMore from '../components/btn-more.vue'
 
 export default {
   name: 'home',
-  components: { Quote },
+  components: { Quote, BtnMore },
   data: () => ({
     isLoading: true,
     quote: ''
@@ -29,7 +30,8 @@ export default {
       <Quote v-bind="{ quote }" />
     </div>
     <footer>
-      <button type="button" @click="loadQuote">Nova</button>
+      <button class="new" type="button" @click="loadQuote">Nova</button>
+      <BtnMore class="more" />
     </footer>
   </div>
 </template>
@@ -46,15 +48,13 @@ export default {
 
 footer {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  .new {
+    flex: 1;
+  }
 }
-
-button {
-  border: none;
-  padding: 1rem;
-  display: block;
-  width: 100%;
+.new {
   text-transform: uppercase;
-  color: #fff;
-  background-color: var(--main-color-dark);
 }
 </style>

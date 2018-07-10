@@ -20,4 +20,14 @@ body {
 #app {
   padding: 0 0.5rem;
 }
+a, .button, button {
+  color: #fff;
+}
+.button, button {
+  border: none;
+  padding: 1rem;
+  display: block;
+  text-transform: uppercase;
+  background-color: var(--main-color-dark);
+}
 </style>
