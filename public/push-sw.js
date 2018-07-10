@@ -1,4 +1,4 @@
-const url = `/quotes.json`
+const url = `quotes.json`
 
 const loadQuote = () => fetch(url, {cache: 'force-cache'})
   .then(response => response.json())
