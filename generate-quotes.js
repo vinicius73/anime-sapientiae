@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const sourceFileName = path.join(__dirname, 'quotes.text')
-const destFileName = path.join(__dirname, 'src/.quotes.json')
+const destFileName = path.join(__dirname, 'public/quotes.json')
 const { isEmpty, filter } = require('lodash')
 
 const readFile = () => new Promise((resolve, reject) => {

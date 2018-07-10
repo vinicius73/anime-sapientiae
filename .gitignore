@@ -22,4 +22,4 @@ yarn-error.log*
 
 # project
 
-src/.quotes.json
+public/quotes.json

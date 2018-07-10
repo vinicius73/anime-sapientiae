@@ -2,8 +2,15 @@
 export default {
   name: 'btn-more',
   data: () => ({
-    visible: false
+    visible: false,
+    notificationPermission: null
   }),
+  computed: {
+    showBell () {
+      const { notificationPermission } = this
+      return notificationPermission !== 'denied' && notificationPermission !== 'granted'
+    }
+  },
   methods: {
     setVisible () {
       this.visible = !this.visible
@@ -18,7 +25,28 @@ export default {
 
         document.addEventListener('click', this.$event)
       })
+    },
+    requestPermission () {
+      Notification.requestPermission(status => {
+        this.notificationPermission = status
+
+        if (status !== 'granted') {
+          return
+        }
+
+        navigator.serviceWorker
+          .getRegistration()
+          .then(reg => {
+            var options = {
+              tag: 'thanks'
+            }
+            reg.showNotification('Obrigado ;)', options)
+          })
+      })
     }
+  },
+  mounted () {
+    this.notificationPermission = Notification.permission
   },
   beforeDestroy () {
     if (this.$event) {
@@ -36,11 +64,11 @@ export default {
           <i class="fas fa-info"></i>
         </router-link>
       </li>
-      <!-- <li>
-        <a href="#">
+      <li v-if="showBell">
+        <a @click="requestPermission">
           <i class="fas fa-bell"></i>
         </a>
-      </li> -->
+      </li>
     </ul>
     <a class="button" @click="setVisible">
       <i class="fas fa-bars"></i>
