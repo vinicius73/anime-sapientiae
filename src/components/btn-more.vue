@@ -19,6 +19,11 @@ export default {
         document.addEventListener('click', this.$event)
       })
     }
+  },
+  beforeDestroy () {
+    if (this.$event) {
+      document.removeEventListener('click', this.$event)
+    }
   }
 }
 </script>
