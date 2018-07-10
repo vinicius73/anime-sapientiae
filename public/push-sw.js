@@ -18,10 +18,12 @@ const showNotification = quote => {
 }
 
 self.addEventListener('activate', event => {
+  const timeout = 14400000 // 4h
+
   setInterval(() => {
     if (Notification.permission === 'granted' && !!self.registration) {
       loadQuote()
         .then(showNotification)
     }
-  }, ((1000 * 60) * 60) * 6)
+  }, timeout)
 })
