@@ -2,6 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const sourceFileName = path.join(__dirname, 'quotes.text')
 const destFileName = path.join(__dirname, 'src/.quotes.json')
+const { isEmpty, filter } = require('lodash')
 
 const readFile = () => new Promise((resolve, reject) => {
   fs.readFile(sourceFileName, { encoding: 'utf-8' }, (err, data) => {
@@ -30,6 +31,7 @@ const writeFile = lines => {
 
 readFile()
   .then(data => data.split(`\n`))
+  .then(list => filter(list, row => !isEmpty(row)))
   .then(writeFile)
   .then(() => {
     console.log(`created: ${destFileName}`) // eslint-disable-line no-console
