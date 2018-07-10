@@ -1,5 +1,8 @@
 // Inside vue.config.js
 module.exports = {
+  baseUrl: process.env.NODE_ENV === 'production'
+    ? '/anime-sapientiae/'
+    : '/',
   pwa: {
     name: 'Anime Sapientiae',
     themeColor: '#1a2420',
