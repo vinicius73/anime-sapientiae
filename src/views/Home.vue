@@ -30,9 +30,9 @@ export default {
       <Quote v-bind="{ quote }" />
     </div>
     <footer>
-      <button class="new" type="button" @click="loadQuote">
+      <a class="new button" @click="loadQuote">
         Nova <i class="fas fa-sync-alt"></i>
-      </button>
+      </a>
       <BtnMore class="more" />
     </footer>
   </div>
